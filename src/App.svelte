@@ -4,13 +4,38 @@
 
   let width: number = 1024;
   let height: number = 768;
+
+  const getPng = () => {
+    const myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
+
+    const urlencoded = new URLSearchParams();
+    urlencoded.append('width', String(width));
+    urlencoded.append('height', String(height));
+
+    const requestOptions: RequestInit = {
+      method: 'POST',
+      headers: myHeaders,
+      body: urlencoded,
+      redirect: 'follow',
+    };
+
+    fetch('http://localhost:5001', requestOptions)
+      .then((t) => t.blob().then((b) => {
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(b);
+        a.setAttribute('download', `${width}x${height}`);
+        a.click();
+      }))
+      .catch((error) => console.log('error', error));
+  };
 </script>
 
 <main>
     <div class="main-wrapper">
         <TextField outlined label="Width" type="number" min="12" max="4096" bind:value={width}/>
         <TextField outlined label="Height" type="number" min="12" max="4096" bind:value={height}/>
-        <Button block color="black">Get {width} x {height} black png!</Button>
+        <Button block color="black" on:click={getPng}>Get {width} x {height} black png!</Button>
     </div>
 </main>
 
