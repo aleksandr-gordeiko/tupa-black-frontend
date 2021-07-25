@@ -1,0 +1,38 @@
+{
+  "extends": "airbnb-typescript/base",
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "tsconfigRootDir": ".",
+    "project": ["./tsconfig.json"],
+    "extraFileExtensions": [".svelte"],
+    "sourceType": "module",
+    "ecmaVersion": 2017
+  },
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.svelte"
+      ],
+      "processor": "svelte3/svelte3"
+    }
+  ],
+  "plugins": [
+    "svelte3",
+    "@typescript-eslint"
+  ],
+  "settings": {
+    "svelte3/typescript": true
+  },
+  "rules": {
+    "no-await-in-loop": "off",
+    "no-console": "off",
+    "no-restricted-syntax": ["off", "ForOfStatement", "ForInStatement"],
+    "guard-for-in": "off",
+    "max-len": ["error", {"code":  120}],
+    "no-plusplus": "off"
+  }
+}

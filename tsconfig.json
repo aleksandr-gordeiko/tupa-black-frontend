@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "module": "ESNext",
+        "target": "es6",
+        "sourceMap": true,
+        "outDir": "build",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true
+    },
+    "include": [
+        "src"
+    ]
+}
