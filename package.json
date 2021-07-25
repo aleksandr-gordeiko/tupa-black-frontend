@@ -32,6 +32,7 @@
     "typescript": "^4.0.0"
   },
   "dependencies": {
+    "@fullhuman/postcss-purgecss": "^4.0.3",
     "smelte": "^1.1.6",
     "sirv-cli": "^1.0.0"
   }

@@ -13,6 +13,7 @@
     urlencoded.append('width', String(width));
     urlencoded.append('height', String(height));
 
+    // eslint-disable-next-line no-undef
     const requestOptions: RequestInit = {
       method: 'POST',
       headers: myHeaders,
