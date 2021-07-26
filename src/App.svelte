@@ -2,6 +2,8 @@
   import 'smelte/src/tailwind.css';
   import { Button, TextField } from 'smelte';
 
+  let widthError: string = '';
+  let heightError: string = '';
   let width: number = 1024;
   let height: number = 768;
 
@@ -30,15 +32,21 @@
         a.setAttribute('download', `${width}x${height}`);
         a.click();
       }))
-      .catch((error) => console.log('error', error));
+      .catch((err) => console.log('error', err));
+  };
+
+  const onGetPngClick = () => {
+    if (width > 4096 || width < 12) widthError = 'The width must be within 12:4096 range'; else widthError = '';
+    if (height > 4096 || height < 12) heightError = 'The height must be within 12:4096 range'; else heightError = '';
+    if (widthError === '' && heightError === '') getPng();
   };
 </script>
 
 <main>
     <div class="main-wrapper">
-        <TextField outlined label="Width" type="number" min="12" max="4096" bind:value={width}/>
-        <TextField outlined label="Height" type="number" min="12" max="4096" bind:value={height}/>
-        <Button block color="black" on:click={getPng}>Get {width} x {height} black png!</Button>
+        <TextField outlined label="Width" type="number" bind:value={width} bind:error={widthError}/>
+        <TextField outlined label="Height" type="number" bind:value={height} bind:error={heightError}/>
+        <Button block color="black" on:click={onGetPngClick}>Get {width} x {height} black png!</Button>
     </div>
 </main>
 
