@@ -21,7 +21,9 @@
       redirect: 'follow',
     };
 
-    fetch('http://localhost:5001', requestOptions)
+    const url = 'http://black.simpatiya.ga/api';
+
+    fetch(url, requestOptions)
       .then((t) => t.blob().then((b) => {
         const a = document.createElement('a');
         a.href = URL.createObjectURL(b);
