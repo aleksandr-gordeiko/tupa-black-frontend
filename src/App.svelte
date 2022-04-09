@@ -23,7 +23,7 @@
       redirect: 'follow',
     };
 
-    const url = 'http://black.simpatiya.ga/api';
+    const url = 'https://black.simpatiya.ga/api';
 
     fetch(url, requestOptions)
       .then((t) => t.blob().then((b) => {
